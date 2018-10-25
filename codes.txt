@@ -1,0 +1,182 @@
+int led = 13;
+int led1 = 6;
+int led2 = 5;
+int led3 = 4;
+int led4 = 3;
+
+int ldr = A0;
+
+int ir = A1;
+int ir1 = A1;
+int ir2 = A2;
+int ir3 = A3;
+int ir4 = A4;
+
+void setup()
+{
+  Serial.begin (9600);
+  pinMode (led, OUTPUT);
+  pinMode (led1, OUTPUT);
+  pinMode (led2, OUTPUT);
+  pinMode (led3, OUTPUT);
+  pinMode (led4, OUTPUT);
+
+  pinMode (ldr, INPUT);
+
+  pinMode (ir, INPUT);
+  pinMode (ir1, INPUT);
+  pinMode (ir2, INPUT);
+  pinMode (ir3, INPUT);
+  pinMode (ir4, INPUT);
+
+}
+void loop()
+{
+  //Serial.println(analogRead(A0));
+  int ldrStatus = analogRead (ldr);
+
+  //Serial.println(ldrStatus);
+
+  if (ldrStatus <= 200)
+  {
+    digitalWrite(led, HIGH);
+    analogWrite(led, 255 / 20.0);
+
+    digitalWrite(led1, HIGH);
+    analogWrite(led1, 255 / 100.0);
+
+    digitalWrite(led2, HIGH);
+    analogWrite(led2, 255 / 60.0);
+
+    digitalWrite(led3, HIGH);
+    analogWrite(led3, 255 / 20.0);
+
+    digitalWrite(led4, HIGH);
+    analogWrite(led4, 255 / 60.0);
+
+
+    Serial.println(analogRead(A2));
+
+
+    if (analogRead(A1) < 200)     // IR 1 CODE
+    {
+      digitalWrite(led1, HIGH);
+      analogWrite(led1, 255);
+    }
+    else
+    {
+      digitalWrite(led1, HIGH);
+      analogWrite(led1, 255 / 100.0);
+      //delay(1000);// micro second
+    }
+
+
+    if (analogRead(A2) < 200)     // IR 1 CODE
+    {
+      digitalWrite(led2, HIGH);
+      analogWrite(led2, 255);
+    }
+    else
+    {
+      digitalWrite(led2, HIGH);
+      analogWrite(led2, 255 / 60.0);
+      //delay(1000);// micro second
+    }
+    if (analogRead(A3) < 200)     // IR 1 CODE
+    {
+      digitalWrite(led3, HIGH);
+      analogWrite(led3, 255);
+    }
+    else
+    {
+      digitalWrite(led3, HIGH);
+      analogWrite(led3, 255 / 20.0);
+      //delay(1000);// micro second
+    }
+    if (analogRead(A4) < 200)     // IR 1 CODE
+    {
+      digitalWrite(led4, HIGH);
+      analogWrite(led4, 255);
+    }
+    else
+    {
+      digitalWrite(led4, HIGH);
+      analogWrite(led4, 255 / 60.0);
+      //delay(1000);// micro second
+    }
+
+    /*
+
+
+      if (analogRead(A1) < 500)     // IR 1 CODE
+      {
+      digitalWrite(led, HIGH);
+      analogWrite(led, 255 / 5);
+      }
+      else
+      {
+      digitalWrite(led, HIGH);
+      delay(1000);// micro second
+      }
+
+      if (analogRead(A2) < 500)         // IR 2 CODE
+      {
+      digitalWrite(led1, LOW);
+      analogWrite(led1, 255 / 5);
+      }
+      else
+      {
+      digitalWrite(led1, HIGH);
+      delay(1000);// micro second
+      }
+
+      if (analogRead(A3) < 500)         // IR 3 CODE
+      {
+      digitalWrite(led2, LOW);
+      analogWrite(led2, 255 / 5);
+      }
+      else
+      {
+      digitalWrite(led2, HIGH);
+      delay(1000);// micro second
+      }
+
+      if (analogRead(A4) < 500)     // IR 4 CODE
+      {
+      digitalWrite(led3, LOW);
+      analogWrite(led3, 255 / 5);
+      }
+      else
+      {
+      digitalWrite(led3, HIGH);
+      delay(1000);// micro second
+      }
+
+      if (analogRead(A5) < 500)      // IR 5 CODE
+      {
+      digitalWrite(led4, LOW);
+      analogWrite(led4, 255 / 5);
+      }
+      else
+      {
+      digitalWrite(led4, HIGH);
+      delay(1000);// micro second
+      }
+
+
+    */
+
+
+    //Serial.println("BBB");
+
+  }
+  else
+  {
+    //Serial.println("Aaa");
+    digitalWrite(led, LOW);
+    digitalWrite(led1, LOW);
+    digitalWrite(led2, LOW);
+    digitalWrite(led3, LOW);
+    digitalWrite(led4, LOW);
+  }
+}
